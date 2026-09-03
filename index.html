@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inicio | Futbol Metrics</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a class="logo" href="index.html">
+      <span class="logo-mark"></span>FUTBOL <span style="color:#70c79e">METRICS</span>
+    </a>
+    <ul class="menu">
+      <li><a class="active" href="index.html">Inicio</a></li>
+      <li><a class="" href="noticias.html">Noticias</a></li>
+      <li><a class="" href="partidos.html">Próximos Partidos</a></li>
+      <li><a class="" href="ligas.html">Ligas</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="search-box"><input type="search" placeholder="Buscar..."><span class="search-icon">⌕</span></div>
+      <a class="admin-link" href="admin/admin.html">Admin</a>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">Plataforma de información</span>
+    <h1>El fútbol,<br><span>bien informado</span></h1>
+    <p>Noticias, próximos partidos y ligas del fútbol nacional e internacional, todo en un solo lugar.</p>
+    <div class="hero-buttons">
+      <a href="noticias.html" class="btn btn-primary">Ver Noticias</a>
+      <a href="partidos.html" class="btn btn-outline">Próximos Partidos</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>7</strong><span>LIGAS</span></div>
+    <div class="hero-stat"><strong>50+</strong><span>EQUIPOS</span></div>
+    <div class="hero-stat"><strong>200+</strong><span>NOTICIAS</span></div>
+  </div>
+</section>
+
+<div class="container">
+  <section class="section">
+    <div class="section-head">
+      <div><h2 class="section-title">Noticias destacadas</h2>
+        <p class="section-subtitle">Las novedades más importantes del fútbol.</p>
+      </div>
+      <a class="btn btn-light" href="noticias.html">Ver todas</a>
+    </div>
+    <div class="grid news-grid">
+      <article class="card">
+        <div class="card-image"><img src="assets/internacional.jpeg" alt="Noticia internacional"></div>
+        <div class="card-body">
+          <span class="tag">Internacional</span>
+          <h3>Los grandes equipos preparan una nueva jornada</h3>
+          <span class="meta">25 de agosto de 2026</span>
+          <p>Conoce las principales novedades antes de los próximos encuentros.</p>
+          <a class="btn btn-primary" href="noticia-detalle.html">Leer noticia</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-image"><img src="assets/colombiana.jpeg" alt="Noticia Colombia"></div>
+        <div class="card-body">
+          <span class="tag">Colombia</span>
+          <h3>Todo listo para la próxima fecha del fútbol colombiano</h3>
+          <span class="meta">24 de agosto de 2026</span>
+          <p>Estos son algunos de los partidos que marcarán la jornada.</p>
+          <a class="btn btn-primary" href="noticia-detalle.html">Leer noticia</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-image"><img src="assets/champions.jpg" alt="Noticia Champions League"></div>
+        <div class="card-body">
+          <span class="tag">Champions</span>
+          <h3>Las principales competiciones vuelven a escena</h3>
+          <span class="meta">23 de agosto de 2026</span>
+          <p>Repasamos las noticias más importantes de las grandes ligas.</p>
+          <a class="btn btn-primary" href="noticia-detalle.html">Leer noticia</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Próximos partidos</h2>
+        <p class="section-subtitle">Los encuentros más cercanos.</p></div>
+      <a class="btn btn-light" href="partidos.html">Ver partidos</a>
+    </div>
+    <div class="grid matches-grid">
+      <div class="match-card">
+        <span class="competition">LaLiga</span>
+        <div class="match-date">28 Ago · 20:00</div>
+        <div class="teams">
+          <div class="team">
+            <div class="team-logo">R</div>
+            Real Madrid
+          </div>
+          <span class="vs">VS</span>
+          <div class="team">
+            <div class="team-logo">B</div>
+            Barcelona
+          </div>
+        </div>
+      </div>
+      <div class="match-card">
+        <span class="competition">Premier League</span>
+        <div class="match-date">29 Ago · 16:00</div>
+        <div class="teams">
+          <div class="team">
+            <div class="team-logo">L</div>
+            Liverpool
+          </div>
+          <span class="vs">VS</span>
+          <div class="team">
+            <div class="team-logo">A</div>
+            Arsenal
+          </div>
+        </div>
+      </div>
+      <div class="match-card">
+        <span class="competition">Liga BetPlay</span>
+        <div class="match-date">30 Ago · 18:10</div>
+        <div class="teams">
+          <div class="team">
+            <div class="team-logo">AM</div>
+            América
+          </div>
+          <span class="vs">VS</span>
+          <div class="team">
+            <div class="team-logo">N</div>
+            Nacional
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div><h2 class="section-title">Ligas destacadas</h2><p class="section-subtitle">Las principales competiciones.</p></div>
+      <a class="btn btn-light" href="ligas.html">Ver ligas</a>
+    </div>
+    <div class="grid leagues-grid">
+      <div class="league-card"><div class="league-icon">🇨🇴</div><h3>Liga BetPlay</h3><p>Colombia · Primera división</p><a class="btn btn-primary" href="ligas.html">Ver liga</a></div>
+      <div class="league-card"><div class="league-icon">🇪🇸</div><h3>LaLiga</h3><p>España · Primera división</p><a class="btn btn-primary" href="ligas.html">Ver liga</a></div>
+      <div class="league-card"><div class="league-icon">🇬🇧</div><h3>Premier League</h3><p>Inglaterra · Primera división</p><a class="btn btn-primary" href="ligas.html">Ver liga</a></div>
+      <div class="league-card"><div class="league-icon">🏆</div><h3>Champions League</h3><p>Europa · Competición internacional</p><a class="btn btn-primary" href="ligas.html">Ver liga</a></div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div><strong>⚽ Futbol Metrics</strong><br><small>Información futbolística nacional e internacional.</small></div>
+    <small>@copyright 2023 Futbol Metrics. Todos los derechos reservados.</small>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

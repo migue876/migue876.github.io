@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestión de partidos | Futbol Metrics</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body class="admin-shell">
+<div class="admin-layout">
+
+<aside class="sidebar">
+  <div class="sidebar-title">⚽ Futbol Metrics<br><small style="color:#9fc4b6">Administración</small></div>
+  <nav>
+    <a class="" href="admin.html">Dashboard</a>
+    <a class="" href="admin-noticias.html">Noticias</a>
+    <a class="active" href="admin-partidos.html">Partidos</a>
+    <a class="" href="admin-ligas.html">Ligas</a>
+    <a href="../index.html">Volver al sitio</a>
+  </nav>
+</aside>
+
+<main class="admin-main">
+<div class="admin-top"><div><h1>Gestión de partidos</h1><p class="meta">Administrar los próximos encuentros.</p></div><a class="btn btn-primary" href="#formulario">+ Nuevo partido</a></div>
+<div id="formulario" class="form-card">
+  <h2 style="color:var(--green-900);margin-bottom:15px">Registrar partido</h2>
+  <div class="form-grid">
+    <div class="form-group"><label>Liga</label><select><option>LaLiga</option><option>Premier League</option><option>Liga BetPlay</option></select></div>
+    <div class="form-group"><label>Estado</label><select><option>Programado</option><option>Finalizado</option><option>Cancelado</option></select></div>
+    <div class="form-group"><label>Equipo local</label><input placeholder="Real Madrid"></div>
+    <div class="form-group"><label>Equipo visitante</label><input placeholder="Barcelona"></div>
+    <div class="form-group"><label>Fecha</label><input type="date"></div>
+    <div class="form-group"><label>Hora</label><input type="time"></div>
+  </div><br><button class="btn btn-primary">Guardar partido</button>
+</div>
+<div class="table-wrap"><table><thead><tr><th>ID</th><th>Partido</th><th>Liga</th><th>Fecha</th><th>Hora</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>
+<tr><td>1</td><td>Real Madrid vs Barcelona</td><td>LaLiga</td><td>28/08/2026</td><td>20:00</td><td><span class="status">Programado</span></td><td><div class="actions"><button class="action-btn edit">Editar</button><button class="action-btn delete">Eliminar</button></div></td></tr>
+<tr><td>2</td><td>Liverpool vs Arsenal</td><td>Premier League</td><td>29/08/2026</td><td>16:00</td><td><span class="status">Programado</span></td><td><div class="actions"><button class="action-btn edit">Editar</button><button class="action-btn delete">Eliminar</button></div></td></tr>
+</tbody></table></div>
+</main>
+</div>
+<script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestión de noticias | Futbol Metrics</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body class="admin-shell">
+<div class="admin-layout">
+
+<aside class="sidebar">
+  <div class="sidebar-title">⚽ Futbol Metrics<br><small style="color:#9fc4b6">Administración</small></div>
+  <nav>
+    <a class="" href="admin.html">Dashboard</a>
+    <a class="active" href="admin-noticias.html">Noticias</a>
+    <a class="" href="admin-partidos.html">Partidos</a>
+    <a class="" href="admin-ligas.html">Ligas</a>
+    <a href="../index.html">Volver al sitio</a>
+  </nav>
+</aside>
+
+<main class="admin-main">
+<div class="admin-top"><div><h1>Gestión de noticias</h1><p class="meta">Crear, consultar, editar y eliminar noticias.</p></div><a class="btn btn-primary" href="#formulario">+ Nueva noticia</a></div>
+<div id="formulario" class="form-card">
+  <h2 style="color:var(--green-900);margin-bottom:15px">Registrar noticia</h2>
+  <div class="form-grid">
+    <div class="form-group"><label>Título</label><input placeholder="Título de la noticia"></div>
+    <div class="form-group"><label>Categoría</label><select><option>Internacional</option><option>Colombia</option><option>Fichajes</option><option>Champions League</option></select></div>
+    <div class="form-group full"><label>Resumen</label><input placeholder="Resumen breve"></div>
+    <div class="form-group full"><label>Contenido</label><textarea placeholder="Contenido de la noticia"></textarea></div>
+    <div class="form-group"><label>Imagen</label><input type="text" placeholder="assets/noticia.jpg"></div>
+    <div class="form-group"><label>Estado</label><select><option>Publicada</option><option>Borrador</option></select></div>
+  </div><br><button class="btn btn-primary">Guardar noticia</button>
+</div>
+<div class="table-wrap"><table><thead><tr><th>ID</th><th>Título</th><th>Categoría</th><th>Fecha</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>
+<tr><td>1</td><td>Los grandes equipos preparan una nueva jornada</td><td>Internacional</td><td>25/08/2026</td><td><span class="status">Publicada</span></td><td><div class="actions"><button class="action-btn edit">Editar</button><button class="action-btn delete">Eliminar</button></div></td></tr>
+<tr><td>2</td><td>Próxima fecha del fútbol colombiano</td><td>Colombia</td><td>24/08/2026</td><td><span class="status">Publicada</span></td><td><div class="actions"><button class="action-btn edit">Editar</button><button class="action-btn delete">Eliminar</button></div></td></tr>
+</tbody></table></div>
+</main>
+</div>
+<script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,990 @@
+/* =====================================================
+   MIS COLORES Y VALORES REUTILIZABLES
+   (los guardo aquí para no escribir el mismo código de
+   color muchas veces. Los uso así: var(--nombre) )
+===================================================== */
+:root {
+  --verde-oscuro: #123f31;
+  --verde-800: #18513f;
+  --verde-medio: #236b53;
+  --verde-600: #2f8063;
+  --verde-claro: #e1eee9;
+  --fondo: #f5f7f5;
+  --blanco: #fff;
+  --texto: #1d2925;
+  --gris: #68736f;
+  --borde: #dce5e1;
+  --sombra: 0 10px 28px rgba(18, 63, 49, 0.09); /* sombra suave para las tarjetas */
+  --radio: 14px; /* esquinas redondeadas de las tarjetas */
+}
+
+
+/* =====================================================
+   REGLAS GENERALES DE TODA LA PÁGINA
+===================================================== */
+
+/* el * significa "todos los elementos" */
+* {
+  box-sizing: border-box; /* así el padding no agranda el ancho */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* al saltar a un ancla, se desliza suave */
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.55;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* los botones e inputs por defecto no copian la fuente del body,
+   por eso se lo digo aquí */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.container {
+  width: min(1180px, 92%); /* usa 92% del ancho, pero nunca más de 1180px */
+  margin: auto; /* esto lo centra */
+}
+
+
+/* =====================================================
+   MENÚ DE ARRIBA
+===================================================== */
+.header {
+  position: sticky; /* se queda pegado arriba al hacer scroll */
+  top: 0;
+  z-index: 100; /* para que quede encima de todo lo demás */
+  background: var(--verde-oscuro);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.nav {
+  height: 70px;
+  display: flex; /* pone el logo y el menú en fila */
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 800;
+  white-space: nowrap; /* evita que el texto se corte en dos líneas */
+}
+
+.logo-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: #3b9b77;
+  display: grid;
+  place-items: center; /* centra el emoji dentro del cuadrito */
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  list-style: none; /* quita los puntitos de la lista */
+  margin-left: auto; /* empuja el menú hacia la derecha */
+}
+
+.menu a {
+  display: block;
+  padding: 11px 13px;
+  border-radius: 9px;
+  color: #e6f0ec;
+  font-size: 0.92rem;
+}
+
+/* estilo cuando paso el mouse encima, o si es la página en la que estoy */
+.menu a:hover,
+.menu a.active {
+  background: #318062;
+  color: #fff;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+/* la caja del buscador */
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #23664f;
+  border-radius: 9px;
+  overflow: hidden; /* para que el input respete las esquinas redondeadas */
+}
+
+.search-box input {
+  width: 145px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #fff;
+  padding: 10px 12px;
+}
+
+/* el texto gris de "Buscar..." dentro del input */
+.search-box input::placeholder {
+  color: #b9d0c8;
+}
+
+/* la lupita */
+.search-icon {
+  padding: 0 10px;
+  color: #9bd2bd;
+}
+
+.admin-link {
+  background: #3b8b6c;
+  padding: 10px 13px;
+  border-radius: 9px;
+  font-size: 0.88rem;
+}
+
+/* el botón de 3 rayitas, empieza oculto (solo se ve en celular) */
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: #2d775b;
+  color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 9px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   HERO — la portada grande con la imagen de fondo
+===================================================== */
+.hero {
+  min-height: 590px;
+  position: relative; /* necesario para que .hero-stats se pueda ubicar encima */
+  overflow: hidden;
+
+  /* aquí pongo DOS fondos separados por coma:
+     1) un degradado verde semitransparente (arriba)
+     2) la foto assets/hero.jpg (abajo, se ve a través del degradado) */
+  background-image:
+    linear-gradient(90deg, rgba(10, 62, 47, 0.88) 0%, rgba(15, 75, 57, 0.67) 48%, rgba(12, 66, 50, 0.55) 100%),
+    url("assets/campnou.jpg");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center; /* centra el texto verticalmente dentro del hero */
+}
+
+/* esto crea una capa invisible extra, solo para agregar un poquito
+   más de sombra abajo del hero y que el texto se lea mejor */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* ocupa todo el hero: arriba, abajo, izquierda y derecha */
+  background: linear-gradient(0deg, rgba(7, 44, 34, 0.2), transparent 45%);
+  pointer-events: none; /* así no bloquea los clics de los botones */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* para quedar encima de la capa .hero::after */
+  width: min(1180px, 92%); /* mismo ancho que .container, queda centrado */
+  margin: auto;
+  color: white;
+  padding: 60px 0;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: #4ca27e;
+  color: #fff;
+  padding: 7px 12px;
+  border-radius: 20px; /* número alto = forma de pastilla */
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  /* el tamaño de letra crece o se achica según el ancho de pantalla,
+     pero nunca menos de 3rem ni más de 5.5rem */
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  line-height: 0.98;
+  max-width: 650px;
+  margin: 20px 0 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+/* para pintar solo una PARTE del título de otro color */
+.hero h1 span {
+  color: #75c39e;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  max-width: 620px;
+  color: #e2eeea;
+  margin: 20px 0 27px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* si no caben, pasan a la siguiente línea */
+}
+
+/* estilo que comparten TODOS los botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* estos se combinan con .btn en el HTML, ej: class="btn btn-primary" */
+.btn-primary {
+  background: #3d9a76;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #338567; /* un poco más oscuro al pasar el mouse */
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.btn-light {
+  background: var(--verde-claro);
+  color: var(--verde-oscuro);
+}
+
+/* los numeritos "7 LIGAS / 50+ EQUIPOS / 200+ NOTICIAS" */
+.hero-stats {
+  position: absolute;
+  z-index: 2;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%); /* truco para centrarlo verticalmente */
+  display: grid;
+  gap: 16px;
+}
+
+.hero-stat {
+  min-width: 105px;
+  padding: 17px 14px;
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(2px); /* difumina lo que está detrás (efecto vidrio) */
+  border-radius: 8px;
+}
+
+.hero-stat strong {
+  display: block;
+  color: #7fd0aa;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.hero-stat span {
+  font-size: 0.72rem;
+  color: #e0ebe7;
+}
+
+
+/* =====================================================
+   TARJETAS — noticias, partidos y ligas
+===================================================== */
+.section {
+  padding: 58px 0 0;
+}
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between; /* título a la izquierda, botón a la derecha */
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.section-title {
+  color: var(--verde-oscuro);
+  font-size: 1.7rem;
+}
+
+.section-subtitle {
+  color: var(--gris);
+  font-size: 0.9rem;
+  margin-top: 3px;
+}
+
+/* .grid es la base: solo dice "organiza en cuadrícula".
+   la cantidad de columnas la pone cada clase de abajo */
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.news-grid {
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+}
+
+.matches-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.leagues-grid {
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+}
+
+/* tarjeta de noticia */
+.card {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+
+.card-image {
+  height: 180px;
+  background: var(--verde-claro);
+  overflow: hidden; /* recorta la imagen si es más grande que la caja */
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* la imagen llena el espacio sin deformarse */
+  display: block;
+}
+
+.card-body {
+  padding: 18px;
+}
+
+.tag {
+  display: inline-block;
+  color: var(--verde-medio);
+  font-size: 0.73rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.card h3 {
+  font-size: 1.05rem;
+  line-height: 1.3;
+  margin: 7px 0;
+  color: var(--verde-oscuro);
+}
+
+.meta {
+  font-size: 0.8rem;
+  color: var(--gris);
+}
+
+.card p {
+  font-size: 0.88rem;
+  color: var(--gris);
+  margin: 9px 0 15px;
+}
+
+/* tarjeta de partido */
+.match-card {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 18px;
+  text-align: center;
+  box-shadow: var(--sombra);
+}
+
+.competition {
+  font-size: 0.75rem;
+  color: var(--verde-medio);
+  font-weight: 800;
+}
+
+.match-date {
+  font-size: 0.8rem;
+  color: var(--gris);
+  margin: 4px 0 16px;
+}
+
+.teams {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.team {
+  width: 95px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.team-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%; /* 50% en un cuadrado = círculo */
+  background: var(--verde-claro);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 7px; /* "0 auto" lo centra horizontalmente */
+  color: var(--verde-oscuro);
+  font-weight: 900;
+}
+
+.vs {
+  font-size: 0.78rem;
+  color: var(--gris);
+  font-weight: 900;
+}
+
+/* tarjeta de liga */
+.league-card {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 20px;
+  box-shadow: var(--sombra);
+}
+
+.league-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--verde-claro);
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.league-card h3 {
+  color: var(--verde-oscuro);
+  font-size: 1.05rem;
+}
+
+.league-card p {
+  color: var(--gris);
+  font-size: 0.82rem;
+  margin: 3px 0 15px;
+}
+
+
+/* =====================================================
+   PÁGINAS INTERNAS — Noticias, Partidos, Ligas
+===================================================== */
+.page-header {
+  padding: 52px 0 25px;
+}
+
+.page-header h1 {
+  font-size: 2.6rem;
+  color: var(--verde-oscuro);
+}
+
+.page-header p {
+  color: var(--gris);
+  max-width: 680px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.input,
+.select {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 9px;
+  padding: 11px 13px;
+  outline: 0;
+  color: var(--texto);
+}
+
+.input {
+  flex: 1; /* crece para ocupar el espacio sobrante */
+  min-width: 220px;
+}
+
+.filter {
+  border: 1px solid var(--borde);
+  background: #fff;
+  border-radius: 20px;
+  padding: 8px 14px;
+  color: var(--gris);
+  cursor: pointer;
+}
+
+/* el botón de filtro que está seleccionado */
+.filter.active {
+  background: var(--verde-oscuro);
+  color: #fff;
+  border-color: var(--verde-oscuro);
+}
+
+/* noticia completa (detalle) */
+.article {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 34px;
+  box-shadow: var(--sombra);
+  max-width: 900px;
+  margin: 25px auto;
+}
+
+.article h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: var(--verde-oscuro);
+  margin: 7px 0;
+}
+
+.article-image {
+  height: 330px;
+  border-radius: 13px;
+  background: var(--verde-claro);
+  display: grid;
+  place-items: center;
+  font-size: 90px;
+  margin: 25px 0;
+}
+
+.article p {
+  color: #4e5b56;
+  margin: 0 0 18px;
+}
+
+.back {
+  color: var(--verde-medio);
+  font-weight: 700;
+}
+
+.footer {
+  margin-top: 65px;
+  background: var(--verde-oscuro);
+  color: #dceae5;
+  padding: 35px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.footer small {
+  color: #b9ccc5;
+}
+
+
+/* =====================================================
+   PANEL DE ADMINISTRADOR
+===================================================== */
+.admin-shell {
+  min-height: 100vh; /* 100vh = 100% de la altura de la pantalla */
+  background: var(--fondo);
+}
+
+.admin-layout {
+  display: grid;
+  /* 2 columnas: la primera fija de 235px (el menú lateral),
+     la segunda "1fr" toma todo el resto del espacio */
+  grid-template-columns: 235px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--verde-oscuro);
+  color: #fff;
+  padding: 25px 17px;
+}
+
+.sidebar-title {
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 11px 12px;
+  border-radius: 9px;
+  color: #d9e7e1;
+  margin-bottom: 5px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.admin-main {
+  padding: 34px;
+  min-width: 0;
+}
+
+.admin-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.admin-top h1 {
+  color: var(--verde-oscuro);
+}
+
+/* las cajitas con números: 24 noticias, 12 partidos, 7 ligas */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.stat {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 13px;
+  padding: 20px;
+  box-shadow: var(--sombra);
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--gris);
+}
+
+.stat strong {
+  display: block;
+  font-size: 2rem;
+  color: var(--verde-oscuro);
+  margin-top: 4px;
+}
+
+.admin-section {
+  margin-top: 30px;
+}
+
+.admin-section h2 {
+  font-size: 1.3rem;
+  color: var(--verde-oscuro);
+  margin-bottom: 14px;
+}
+
+/* si la tabla no cabe en pantalla, aparece scroll horizontal */
+.table-wrap {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 13px;
+  overflow: auto;
+  box-shadow: var(--sombra);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; /* une los bordes de las celdas en uno solo */
+  min-width: 720px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--borde);
+  font-size: 0.86rem;
+}
+
+th {
+  background: #f7f9f8;
+  color: var(--verde-oscuro);
+}
+
+/* etiqueta tipo "pastilla" para el estado (Publicado, Activa...) */
+.status {
+  display: inline-block;
+  background: var(--verde-claro);
+  color: var(--verde-oscuro);
+  border-radius: 15px;
+  padding: 4px 9px;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.actions {
+  display: flex;
+  gap: 7px;
+}
+
+.action-btn {
+  border: 0;
+  border-radius: 7px;
+  padding: 7px 9px;
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.edit {
+  background: #e5eee9;
+  color: var(--verde-oscuro);
+}
+
+.delete {
+  background: #f2e7e4;
+  color: #82483d;
+}
+
+/* formulario para crear o editar (noticia, partido, liga) */
+.form-card {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 13px;
+  padding: 22px;
+  box-shadow: var(--sombra);
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 campos por fila */
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column; /* el label va arriba, el input abajo */
+  gap: 6px;
+}
+
+/* este campo ocupa las 2 columnas completas, en vez de solo 1 */
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--verde-oscuro);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 10px;
+  outline: none;
+  background: #fff;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical; /* solo se puede estirar hacia abajo */
+}
+
+
+/* =====================================================
+   RESPONSIVE — para que se vea bien en pantallas chicas
+   (@media solo aplica sus reglas cuando la pantalla mide
+   ESO o menos)
+===================================================== */
+
+/* tablets: 950px de ancho o menos */
+@media (max-width: 950px) {
+  .menu {
+    gap: 0;
+  }
+  .menu a {
+    padding: 10px 9px;
+    font-size: 0.84rem;
+  }
+  .search-box input {
+    width: 105px;
+  }
+  .hero-stats {
+    right: 3%;
+  }
+  .news-grid,
+  .matches-grid {
+    grid-template-columns: repeat(2, 1fr); /* de 3 a 2 columnas */
+  }
+  .leagues-grid {
+    grid-template-columns: repeat(2, 1fr); /* de 4 a 2 columnas */
+  }
+}
+
+/* celulares: 720px de ancho o menos */
+@media (max-width: 720px) {
+  .nav {
+    height: 64px;
+  }
+
+  /* aparece el botón hamburguesa (antes tenía display:none) */
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+    margin-left: auto;
+  }
+
+  /* el menú se convierte en una lista desplegable, oculta por defecto */
+  .menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 64px;
+    background: var(--verde-oscuro);
+    display: none; /* empieza escondido */
+    flex-direction: column; /* los links se apilan uno debajo del otro */
+    align-items: stretch;
+    padding: 10px 4%;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* JavaScript agrega esta clase al hacer clic en el botón hamburguesa */
+  .menu.open {
+    display: flex;
+  }
+
+  .menu a {
+    padding: 13px 14px;
+  }
+
+  .search-box,
+  .admin-link {
+    display: none; /* se ocultan para dejar más espacio en el celular */
+  }
+
+  .hero {
+    min-height: 620px;
+    background-position: center;
+  }
+  .hero-content {
+    padding-top: 40px;
+    padding-bottom: 150px;
+  }
+  .hero h1 {
+    font-size: 3.1rem;
+  }
+  .hero p {
+    font-size: 0.96rem;
+  }
+
+  /* las estadísticas pasan de estar al costado, a estar abajo en fila */
+  .hero-stats {
+    left: 4%;
+    right: 4%;
+    top: auto;
+    bottom: 25px;
+    transform: none;
+    display: flex;
+    gap: 8px;
+  }
+  .hero-stat {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+  }
+  .hero-stat strong {
+    font-size: 1.35rem;
+  }
+
+  /* todas las cuadrículas pasan a una sola columna (todo apilado) */
+  .news-grid,
+  .matches-grid,
+  .leagues-grid,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding-top: 42px;
+  }
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .article {
+    padding: 22px;
+  }
+  .article h1 {
+    font-size: 2rem;
+  }
+  .article-image {
+    height: 220px;
+  }
+
+  /* el panel admin pasa de 2 columnas a 1 sola, menú arriba */
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    padding: 15px;
+  }
+  .sidebar nav {
+    display: flex;
+    gap: 5px;
+    overflow: auto; /* el menú lateral se vuelve horizontal con scroll */
+  }
+  .sidebar a {
+    white-space: nowrap;
+  }
+  .admin-main {
+    padding: 22px 16px;
+  }
+  .admin-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr; /* los campos ya no van en pareja */
+  }
+  .form-group.full {
+    grid-column: auto;
+  }
+  .footer-inner {
+    flex-direction: column;
+  }
+}

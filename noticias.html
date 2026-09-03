@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noticias | Futbol Metrics</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a class="logo" href="index.html"><span class="logo-mark">⚽</span>FUTBOL <span style="color:#70c79e">METRICS</span></a>
+    <ul class="menu">
+      <li><a class="" href="index.html">Inicio</a></li>
+      <li><a class="active" href="noticias.html">Noticias</a></li>
+      <li><a class="" href="partidos.html">Próximos Partidos</a></li>
+      <li><a class="" href="ligas.html">Ligas</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="search-box"><input type="search" placeholder="Buscar..."><span class="search-icon">⌕</span></div>
+      <a class="admin-link" href="admin/admin.html">Admin</a>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="container">
+  <div class="page-header"><h1>Noticias</h1><p>Información y actualidad del fútbol nacional e internacional.</p></div>
+  <div class="toolbar">
+    <input class="input" type="search" placeholder="Buscar una noticia...">
+    <button class="filter active">Todas</button>
+    <button class="filter">Internacional</button>
+    <button class="filter">Colombia</button>
+    <button class="filter">Fichajes</button>
+  </div>
+  <div class="grid news-grid">
+    <article class="card"><div class="card-image">🏟️</div><div class="card-body"><span class="tag">Internacional</span><h3>Los grandes equipos preparan una nueva jornada</h3><span class="meta">25 de agosto de 2026</span><p>Conoce las principales novedades antes de los próximos encuentros.</p><a class="btn btn-primary" href="noticia-detalle.html">Leer noticia</a></div></article>
+    <article class="card"><div class="card-image">⚽</div><div class="card-body"><span class="tag">Colombia</span><h3>Todo listo para la próxima fecha del fútbol colombiano</h3><span class="meta">24 de agosto de 2026</span><p>Estos son algunos de los partidos que marcarán la jornada.</p><a class="btn btn-primary" href="noticia-detalle.html">Leer noticia</a></div></article>
+    <article class="card"><div class="card-image">🏆</div><div class="card-body"><span class="tag">Champions</span><h3>Las principales competiciones vuelven a escena</h3><span class="meta">23 de agosto de 2026</span><p>Repasamos las noticias más importantes de las grandes ligas.</p><a class="btn btn-primary" href="noticia-detalle.html">Leer noticia</a></div></article>
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div><strong>⚽ Futbol Metrics</strong><br><small>Información futbolística nacional e internacional.</small></div>
+    <small>Proyecto académico · HTML + CSS + JavaScript + PHP + MySQL</small>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
